@@ -1,5 +1,5 @@
 #ejercicio 1|
- 
+
 x = int(input("Introduce un numero: "))
 y = int(input("Introduce otro numero: "))
  
@@ -10,7 +10,7 @@ else:
     
  
 #ejercicio 2
- 
+
 a = int(input("Introduce un numero: "))
 b = int(input("Introduce otro numero: "))
 c = int(input("Introduce otro numero: "))
@@ -25,7 +25,7 @@ def max(a, b, c):
 print("El numero maximo es: ",max(a,b,c))
  
 #ejercicio 3
- 
+
 def longitud(elemento):
     contador = 0
     for _ in elemento:
