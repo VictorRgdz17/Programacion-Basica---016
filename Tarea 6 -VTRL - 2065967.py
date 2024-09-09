@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import List, Dict, Set, Union
 
 # Tupla para la fecha (inmutable)
-Fecha = Tuple[int, int, int, int, int, int]
+Fecha = tuple[int, int, int, int, int, int]
 
 class Tarea:
     def __init__(self, nombre: str, categoria: str, etiquetas: Set[str]):
