@@ -1,29 +1,41 @@
 from datetime import datetime
-from typing import List, Dict, Set, Union
+from typing import List, Dict, Set, Tuple
 
 # Tupla para la fecha (inmutable)
 Fecha = tuple[int, int, int, int, int, int]
 
 class Tarea:
+    """Clase que representa una tarea"""
     def __init__(self, nombre: str, categoria: str, etiquetas: Set[str]):
+        """Inicializa una nueva tarea"""
         self.nombre = nombre
         self.categoria = categoria
         self.etiquetas = etiquetas
         self.fecha_creacion = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     def __str__(self) -> str:
+        """Representación en cadena de la tarea"""
         etiquetas = ", ".join(self.etiquetas)
         return f"Tarea: {self.nombre} | Categoría: {self.categoria} | Etiquetas: {etiquetas} | Fecha de creación: {self.fecha_creacion}"
 
 class TareaConFechaLimite(Tarea):
+    """Clase que representa una tarea con una fecha límite"""
     def __init__(self, nombre: str, categoria: str, etiquetas: Set[str], fecha_limite: Fecha):
+        """Inicializa una nueva tarea con fecha límite"""
         super().__init__(nombre, categoria, etiquetas)
         self.fecha_limite = datetime(*fecha_limite).strftime("%Y-%m-%d %H:%M:%S")
 
     def __str__(self) -> str:
+        """
+        Representación en cadena de la tarea con fecha límite.
+        
+        Returns:
+        - str: Cadena que describe la tarea y su fecha límite.
+        """
         return f"{super().__str__()} | Fecha límite: {self.fecha_limite}"
 
 def agregar_tarea(tareas: List[Tarea], categorias: Dict[str, List[Tarea]]) -> None:
+    """Agrega una nueva tarea a la lista de tareas y a la categoría correspondiente"""
     nombre = input("Ingrese el nombre de la tarea: ")
     categoria = input("Ingrese la categoría de la tarea: ")
     etiquetas = set(input("Ingrese etiquetas separadas por coma: ").split(","))
@@ -38,6 +50,7 @@ def agregar_tarea(tareas: List[Tarea], categorias: Dict[str, List[Tarea]]) -> No
     print(f"Tarea '{nombre}' agregada.")
 
 def mostrar_tareas(tareas: List[Tarea]) -> None:
+    """Muestra todas las tareas en la lista"""
     if not tareas:
         print("No hay tareas.")
     else:
@@ -46,6 +59,8 @@ def mostrar_tareas(tareas: List[Tarea]) -> None:
             print(tarea)
 
 def eliminar_tarea(tareas: List[Tarea]) -> None:
+    """
+    Elimina una tarea de la lista según el índice proporcionado por el usuario"""
     if not tareas:
         print("No hay tareas para eliminar.")
         return
@@ -62,6 +77,7 @@ def eliminar_tarea(tareas: List[Tarea]) -> None:
         print("Entrada no válida. Debe ingresar un número.")
 
 def modificar_tarea(tareas: List[Tarea]) -> None:
+    """Modifica una tarea existente en la lista según el índice proporcionado por el usuario"""
     if not tareas:
         print("No hay tareas para modificar.")
         return
@@ -85,6 +101,7 @@ def modificar_tarea(tareas: List[Tarea]) -> None:
         print("Entrada no válida. Debe ingresar un número.")
 
 def gestor_de_tareas() -> None:
+    """Función principal que maneja el menú del gestor de tareas e interactúa con el usuario"""
     tareas: List[Tarea] = []
     categorias: Dict[str, List[Tarea]] = {}
     
