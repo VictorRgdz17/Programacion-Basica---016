@@ -163,7 +163,7 @@ def multiplicar_matrices(A, B):
 
     # Caso base: si la matriz es 1x1
     if n == 1:
-        return [[A[0][0] * B[0][0]]
+        return [[A][0][0] * B[0][0]]
 
     # Divide las matrices en cuadrantes
     mid = n // 2
